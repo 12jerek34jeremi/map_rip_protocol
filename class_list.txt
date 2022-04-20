@@ -1,8 +1,7 @@
-class Path done
+class Path done cpp testing
+class Connection  done cpp testing
+
+
+class template SLL done cpp
 class City done
-class Map
-class Connection  done
-class template SLL done
-class SLLNeighbours done
-class SLLCities done
-class CLLConnections done
+class Map done

@@ -2,8 +2,9 @@
 #define CITY_H
 #include "path.h"
 #include <iostream>
-#include "sll_connection.h"
-#include "sll_neighbours.h"
+#include "sll.h"
+#include "neighbour.h"
+#include "connection.h"
 #include <vector>
 
 
@@ -19,8 +20,8 @@ public:
 
 private:
 	unsigned int id;
-	SLLNeighbours neighbors;
-	SLLConnection connections;
+	SLL<unsigned int, Neighbour>  neighbors;
+	SLL<unsigned int, Connection> connections;
 };
 
 #endif

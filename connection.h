@@ -6,8 +6,12 @@
 
 class Connection
 {
+public:
 	Connection(Path* the_path);
-	void update(Path* path);
+	Connection(const Connection& source); //move constructor
+	Connection(Connection&& source); //move constructor
+	~Connection();
+	void update(Path* the_path);
 	void print(std::ostream& stream, std::vector<std::string> & names);
 
 private:

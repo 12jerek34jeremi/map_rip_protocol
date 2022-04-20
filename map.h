@@ -1,8 +1,9 @@
 #ifndef MAP_H
 #define MAP_H
-#include "sll_cities.h"
 #include <vector>
 #include <iostream>
+#include "sll.h"
+#include "city.h"
 
 
 class Map{
@@ -12,7 +13,7 @@ class Map{
 	bool recalculate_map();
 	
 private:
-	SLLCities cities;
+	SLL<std::string, City> cities;
 	unsigned int next_id;
 	std::vector<std::string> names;
 };

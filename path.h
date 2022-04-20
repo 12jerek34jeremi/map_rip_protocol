@@ -5,14 +5,15 @@
 
 class Path{
 public:
-	Path(unsigned int id, unsigned int legth);
+	Path(unsigned int id, unsigned int distance);
+	Path(const Path* path); //creates a deep copy;
 	~Path();
 
 	bool is_in(unsigned int id);
-	Path* add(unsigned int id, unsigned int legth);
+	Path* add(unsigned int id, unsigned int distance);
 	void print(std::ostream& my_stream, std::vector<std::string> & names);
 	unsigned int from();
-	unsigned int get_length;
+	unsigned int get_length();
 
 private:
 	unsigned int* the_path;
