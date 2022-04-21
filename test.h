@@ -5,6 +5,7 @@
 #include <vector>
 #include "connection.h"
 #include "city.h"
+#include "map.h"
 typedef std::vector<std::string> str_vec;
 
 void test_path();
@@ -12,6 +13,7 @@ Path* create_path(str_vec& path_cities, std::vector<unsigned int>& distances, st
 unsigned get_id(std::string city, str_vec& all_cities);
 void test_connection();
 void test_city();
+void test_all();
 
 void test_path() {
 	str_vec names{"Zakopane", "Wieliczka", "Krakow", "Warzawa", "Gdansk", " Wroclaw"};
@@ -168,6 +170,15 @@ void test_city()
 	std::cout << "\n\n\n";
 	my_city.print_connection(std::cout, all_cities, get_id("Wroclaw", all_cities));
 	std::cout << "\n\n\n";
+}
+
+inline void test_all()
+{
+	Map poland;
+	poland.link("Warszawa", "Bialystok", 200);
+	poland.link("Warszawa", "Gdansk", 350);
+	poland.recalculate_map();
+	poland.how_to_get("Gdansk", "Bialystok", std::cout);
 }
 
 #endif // !TESTING_MODE

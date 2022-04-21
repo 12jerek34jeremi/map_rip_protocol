@@ -1,0 +1,32 @@
+class city:
+    unsigned int id = 4; //each city has an unique id
+
+    SLL<unsigned int, Neighbour> neigbours:
+        Neighbour 7: // id of first neighbou
+            unsigned int distance; City * city;
+        Neighbour 1: //id of second neigbour
+            unsigned int distance; City * city;
+                .
+                .
+                .
+        Neighbour 3:
+            unsigned int distance; City * city;
+    
+    SLL<unsigned int; Connection> connections:
+        Connection 1: //connection to city of id 1
+            Path* best_path; Path* second_best_path;
+        Connection 5:
+            Path* best_path; Path* second_best_path;
+                .
+                .
+                .
+        Connection 2:
+            best path; second_best_path;
+        //if ther is no possible path to other city this city is simply not
+        //in the connection table. IF there is only one route to other city,
+        //second path is nullptr. There is no connection in whole connection
+        //table whose best_path is nullptr
+ 
+ 
+            
+        

@@ -44,12 +44,14 @@ class IteratorVar : public IteratorBase
 public:
 	IteratorVar(ListElement* current);
 	value_type& operator*();
+	key_type& operator&();
 };
 class IteratorConst : public IteratorBase
 {
 public:
 	IteratorConst(ListElement* current);
 	value_type operator*() const;
+	key_type operator&() const;
 };
 
 public:
@@ -61,7 +63,7 @@ public:
 	bool is_in(const key_type key) const;
 	value_type operator[](const key_type key) const;
 	value_type & operator[](const key_type key);
-	value_type& insert_back(const key_type key, const value_type value);
+	value_type* insert_back(const key_type key, const value_type value);
 	IteratorConst begin() const;
 	IteratorVar begin();
 
@@ -164,7 +166,7 @@ value_type& SLL<key_type, value_type>::operator[](const key_type key)
 }
 
 template<typename key_type, typename value_type>
-value_type& SLL<key_type, value_type>::insert_back(const key_type key, const value_type value)
+value_type* SLL<key_type, value_type>::insert_back(const key_type key, const value_type value)
 {
 	/*
 	It inserts new node in the end of the list. Key for new node is 'key' argument
@@ -181,7 +183,7 @@ value_type& SLL<key_type, value_type>::insert_back(const key_type key, const val
 		last = last->next;
 	}
 	elements_nr++;
-	return last->value;
+	return &(last->value);
 }
 
 template<typename key_type, typename value_type>
@@ -321,6 +323,15 @@ value_type& SLL<key_type, value_type>::IteratorVar::operator*()
 	return IteratorBase::current->value;
 }
 
+template<typename key_type, typename value_type>
+inline key_type& SLL<key_type, value_type>::IteratorVar::operator&()
+{
+	if (IteratorBase::current == nullptr)
+		throw std::out_of_range("This iterator points on nothing.\n"
+			"Propably you alredy iterated through whole list, the list is empty or list, from which this iterator was created, was cleard or delete");
+	return IteratorBase::current->key;
+}
+
 template <typename key_type, typename value_type>
 value_type SLL<key_type, value_type>::IteratorConst::operator*() const
 {
@@ -333,6 +344,15 @@ value_type SLL<key_type, value_type>::IteratorConst::operator*() const
 		throw std::out_of_range("This iterator points on nothing.\n"
 			"Propably you alredy iterated through whole list, the list is empty or list, from which this iterator was created, was cleard or delete");
 	return IteratorBase::current->value;
+}
+
+template<typename key_type, typename value_type>
+inline key_type SLL<key_type, value_type>::IteratorConst::operator&() const
+{
+	if (IteratorBase::current == nullptr)
+		throw std::out_of_range("This iterator points on nothing.\n"
+			"Propably you alredy iterated through whole list, the list is empty or list, from which this iterator was created, was cleard or delete");
+	return IteratorBase::current->key;
 }
 
 // END OF ITERATOR IMPLEMENTATION
