@@ -9,16 +9,19 @@
 class Map{
 public:
 	Map(); //creates new Map with no cities
-	bool link(std::string city1, std::string city2, unsigned int distance);
+	bool link(std::string city1, std::string city2, unsigned int distance, std::ostream& stream);
 	/*If any of passed cites is not yet on the map, function first creates new city on new map with given name.
 	If cities were unlink before (one wasn’t a neighbour of other) function links them (adds second city to list of neighbours of city1 and vice versa).
 	If cities were linked before function reset distance between them, so user can use this function to change distance between cities.
 	Function returns true if new link was created, false otherwise.
+	Functon prints on stream relevent information (about city creation or link creation)
 	*/
-	bool unlink(std::string city1, std::string city2, unsigned int distance);
-	/*Function returns false and do nothing if at least one of the cities wasn’t on the map, or if cities weren’t linked.
+	bool unlink(std::string city1, std::string city2, std::ostream& stream);
+	/*Function returns false and do nothing if at least one city wasn’t on the map.
+	Function returns false and do nothing if cities were unlinked. (but both were on the map).
 	If given cities were linked, function unlinks them and returns true. Unlinking means removing first city of
 	neighbours list of second city and removing second city from neighbours list of first city.
+	Function prints relevant information on stream (wheather cities were on map, wheather they were linked before...s
 	*/
 	bool how_to_get(std::string from, std::string destination, std::ostream& stream);
 	/*If any of two passed cities is not on the map fuction ”how_to_get” will print this information.
@@ -27,9 +30,19 @@ public:
 	If there are at least two possible paths connecting those two cities fuction ”how_to_get” will print those path as best_path and second_best_path.
 	*/
 	void recalculate_map();
-	void print_city_neighbours(std::string city1);
+	//calculating the best paths from each city to each other city
+	//see do main doc "story" for more info
+
+	void print_all_cities(std::ostream& stream);
+	/*prints names of all cities that are actually on the map
+	Exemplatory otput on stream from this function:
+	1) Krakow  2) Warszawa  3) Rzeszow  4) Gdansk 5) Szczecin
+	6) Gdynia 7) Czestochowa
+	*/
+
+	void print_city_neighbours(std::string city_name, std::ostream& stream);
 	//prints all neighbours of given city. If city is not on the map this information will be printed.
-	void print_city_connection(std::string city2);
+	void print_city_connections(std::string city_name, std::ostream& stream);
 	//prints all connections (where you can get from this city) of given city.
 	//If city is not on the map this information will be printed.
 	

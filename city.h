@@ -43,10 +43,8 @@ public:
 			path object we need to some howe tell what is the name of each city in the path.
 			Names is vector which indices are cities ids and values are cities names. For example
 			name of city of id 7 is names[7].
-	Exemplatory otput on stream from this function:
-	1) Krakow  2) Warszawa  3) Rzeszow  4) Gdansk 5) Szczecin
-	6) Gdynia 7) Czestochowa
 	*/
+	void print_all_connections(std::ostream& stream, std::vector<std::string>& names);
 	bool print_connection(std::ostream& stream, std::vector<std::string> & names, unsigned int id);
 	/*This function print on passed stream a best path (and if exists second best path) to given city.
 	If connection to given city is not on the connection table function prints that information on screan and

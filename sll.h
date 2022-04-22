@@ -123,6 +123,7 @@ void SLL<key_type, value_type>::clear()
 	}
 	first = nullptr;
 	last = nullptr;
+	elements_nr = 0;
 }
 
 template <typename key_type, typename value_type>
@@ -291,13 +292,13 @@ typename SLL<key_type, value_type>::IteratorBase SLL<key_type, value_type>::Iter
 template<typename key_type, typename value_type>
 bool SLL<key_type, value_type>::IteratorBase::operator==(const IteratorBase& b)
 {
-	return false;
+	return (current == b.current);
 }
 
 template<typename key_type, typename value_type>
 bool SLL<key_type, value_type>::IteratorBase::operator!=(const IteratorBase& b)
 {
-	return false;
+	return (current != b.current);
 }
 
 template <typename key_type, typename value_type>

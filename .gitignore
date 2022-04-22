@@ -4,3 +4,4 @@ Map.vcxproj
 Map.vcxproj.filters
 Map.vcxproj.user
 x64
+out.exe

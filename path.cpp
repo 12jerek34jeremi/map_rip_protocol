@@ -22,7 +22,7 @@ Path::~Path()
 
 bool Path::is_in(unsigned int id)
 {
-	for (int i = 0; i < n * 2; i++, i++) {
+	for (unsigned int i = 0; i < n * 2; i++, i++) {
 		if (the_path[i] == id)
 			return true;
 	}

@@ -14,6 +14,7 @@ unsigned get_id(std::string city, str_vec& all_cities);
 void test_connection();
 void test_city();
 void test_all();
+void create_poland(Map& map);
 
 void test_path() {
 	str_vec names{"Zakopane", "Wieliczka", "Krakow", "Warzawa", "Gdansk", " Wroclaw"};
@@ -172,13 +173,47 @@ void test_city()
 	std::cout << "\n\n\n";
 }
 
-inline void test_all()
+void test_all()
 {
+#if TEST_CASE == 1
 	Map poland;
 	poland.link("Warszawa", "Bialystok", 200);
 	poland.link("Warszawa", "Gdansk", 350);
+
+	poland.print_city_neighbours("Warszawa", std::cout); std::cout << std::endl << std::endl;
+	poland.print_city_neighbours("Bialystok", std::cout); std::cout << std::endl << std::endl;
+	poland.print_city_neighbours("Gdansk", std::cout); std::cout << std::endl << std::endl;
+
 	poland.recalculate_map();
-	poland.how_to_get("Gdansk", "Bialystok", std::cout);
+
+	poland.print_city_connections("Warszawa", std::cout); std::cout << std::endl << std::endl;
+	poland.print_city_connections("Bialystok", std::cout); std::cout << std::endl << std::endl;
+	poland.print_city_connections("Gdansk", std::cout); std::cout << std::endl << std::endl;
+
+	poland.how_to_get("Gdansk", "Bialystok", std::cout); std::cout << std::endl << std::endl;
+#elif TEST_CASE == 2
+	Map poland;
+	create_poland(poland);
+	std::cout << "Starting recalculation" << std::endl;
+	poland.recalculate_map();
+	std::cout << "Recalculation ended" << std::endl;
+	poland.how_to_get("Rzeszow", "Szczecin", std::cout);
+
+#endif
+}
+
+void create_poland(Map& map)
+{
+	map.link("Gdansk", "Warszawa", 350);
+	map.link("Krakow", "Warszawa", 300);
+	map.link("Krakow", "Katowice", 80);
+	map.link("Katowice", "Lodz", 200);
+	map.link("Lodz", "Gdansk", 340);
+	map.link("Katowice", "Wroclaw", 450);
+	map.link("Szczecin", "Gdansk", 350);
+	map.link("Bialystok", "Warszawa", 200);
+	map.link("Warszawa", "Lublin", 200);
+	map.link("Rzeszow", "Lublin", 170);
 }
 
 #endif // !TESTING_MODE

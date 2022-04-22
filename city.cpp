@@ -6,9 +6,10 @@ City::City(unsigned int id): id(id), neighbours(), connections()
 
 void City::update(Path* the_path)
 {
+	this;
 	for (auto iter = neighbours.begin(); iter != nullptr; ++iter) {
 		Neighbour& my_neighbour = *iter;
-		if (!the_path->is_in(my_neighbour.distance))
+		if (!the_path->is_in(&iter))
 			my_neighbour.city->update(the_path->add(id, my_neighbour.distance));
 	}
 
@@ -38,9 +39,26 @@ bool City::remove_me(unsigned int id)
 
 void City::print_neghbours(std::ostream& stream, std::vector<std::string>& names)
 {
+	if (neighbours.get_element_nr() == 0) {
+		stream << "(This city has no neigbours)" << std::endl;
+		return;
+	}
+
 	for (auto iter = neighbours.begin(); iter != nullptr; ++iter) {
 		Neighbour& my_neighbour = *iter;
-		stream << "\tid: " << &iter << ", name: " << names[&iter] << ", distance: " << (*iter).distance;
+		stream << "id: " << &iter << ", name: " << names[&iter] << ", distance: " << (*iter).distance << std::endl;
+	}
+}
+
+void City::print_all_connections(std::ostream& stream, std::vector<std::string>& names)
+{
+	if (connections.get_element_nr() == 0) {
+		stream << "(No known connection to other cities)" << std::endl;
+		return;
+	}
+	for (auto iter = connections.begin(); iter != nullptr; ++iter) {
+		(*iter).print(stream, names);
+		stream << std::endl << std::endl;
 	}
 }
 
