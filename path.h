@@ -9,8 +9,8 @@ public:
 	Path(const Path* source); // This constcructor creates a deep copy of a path.
 	~Path(); //free memory alocated for this path;
 
-	bool is_in(unsigned int id); //checks if city of passed id is in the path. Returns true if city is in the path, false otherwise.
-	Path* add(unsigned int id, unsigned int distance);
+	bool is_in(unsigned int id) const; //checks if city of passed id is in the path. Returns true if city is in the path, false otherwise.
+	Path* add(unsigned int id, unsigned int distance) const;
 	/*	Creates a copy of path with addition of passed id and distance.
 		Dynamically creates a new path of hops nr greater by one than itself's hops number.
 		First n cities id and first n distances are copied from this object to newly created object.
@@ -18,7 +18,7 @@ public:
 		n-th+1 distance of newly created distance is passed distances.
 		This function does not frees memmory allocated for this Path!s
 	*/
-	void print(std::ostream& my_stream, std::vector<std::string> & names);
+	void print(std::ostream& my_stream, const std::vector<std::string> & names) const;
 	/*	Print the path with cities names and distances beetween them.
 		Arguments:
 			std::ostream& my_stream:
@@ -33,8 +33,8 @@ public:
 		The exemplatory output on stream from this function may be:
 		--> Katowice (80) --> Lodz (200) --> Gdansk (340)
 	*/
-	unsigned int from(); //returns an id of origin city of the path (an id of first city on the path)
-	unsigned int get_length(); //return the total length of the path, the sum of all distances in the path.
+	unsigned int from() const; //returns an id of origin city of the path (an id of first city on the path)
+	unsigned int get_length() const; //return the total length of the path, the sum of all distances in the path.
 
 private:
 	unsigned int n; //hops numober (how many cities are in the path)

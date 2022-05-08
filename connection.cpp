@@ -1,6 +1,6 @@
 #include "connection.h"
 
-Connection::Connection(Path*  the_path) : best_path(the_path), second_best_path(nullptr), destination(the_path->from())
+Connection::Connection(const Path*  the_path) : best_path(the_path), second_best_path(nullptr), destination(the_path->from())
 {
 }
 
@@ -18,7 +18,7 @@ Connection::~Connection()
 	if (second_best_path != nullptr) delete second_best_path;
 }
 
-void Connection::update(Path* the_path)
+void Connection::update(const Path* the_path)
 {
 	if (the_path->from() != destination) {
 		throw std::exception("To connection object was sent the path which origin"
@@ -50,7 +50,7 @@ void Connection::update(Path* the_path)
 	}
 }
 
-void Connection::print(std::ostream& stream, std::vector<std::string>& names)
+void Connection::print(std::ostream& stream, const std::vector<std::string>& names) const
 {
 	if (second_best_path == nullptr) {
 		stream << "There is only one known path to city " << names[destination] <<

@@ -33,7 +33,7 @@ public:
 	//calculating the best paths from each city to each other city
 	//see do main doc "story" for more info
 
-	void print_all_cities(std::ostream& stream);
+	void print_all_cities(std::ostream& stream) const;
 	/*prints names of all cities that are actually on the map
 	Exemplatory otput on stream from this function:
 	1) Krakow  2) Warszawa  3) Rzeszow  4) Gdansk 5) Szczecin

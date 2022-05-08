@@ -11,7 +11,7 @@
 class City {
 public:
 	City(unsigned int id); //creates a new city with given id
-	void update(Path* the_path);
+	void update(const Path* the_path);
 	/*
 		If the origin city (first city) of the_path is not yet in connection table the new Connection object with
 		best_path as the_path is created and added to connection table.
@@ -33,7 +33,7 @@ public:
 	* 
 	* If given city is not in the neighbour list function do nothing and return false.
 	*/
-	void print_neghbours(std::ostream& stream, std::vector<std::string> & names);
+	void print_neghbours(std::ostream& stream, const std::vector<std::string> & names);
 	/*This function print on passed stream all neighbours of  this city.
 	Arguments:
 		std::ostream& my_stream:
@@ -44,8 +44,8 @@ public:
 			Names is vector which indices are cities ids and values are cities names. For example
 			name of city of id 7 is names[7].
 	*/
-	void print_all_connections(std::ostream& stream, std::vector<std::string>& names);
-	bool print_connection(std::ostream& stream, std::vector<std::string> & names, unsigned int id);
+	void print_all_connections(std::ostream& stream, const std::vector<std::string>& names);
+	bool print_connection(std::ostream& stream, const std::vector<std::string> & names, unsigned int id);
 	/*This function print on passed stream a best path (and if exists second best path) to given city.
 	If connection to given city is not on the connection table function prints that information on screan and
 	returns false.
@@ -69,7 +69,7 @@ public:
 	--> Szczecin (350) --> Wroclaw (450)
 	*/
 	void forget_all_connections(); //forces to forget all connections (to clear connection table)
-	unsigned int get_id(); //returns the id of this city
+	unsigned int get_id() const; //returns the id of this city
 	void call_update();
 	/*The path sending process needs to start somewhere. This function calls update mehtod on all it's neighbours.
 	* (Its sends the path conating id of this city and distance to given neighbour to all it's neigbour)

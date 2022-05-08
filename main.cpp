@@ -111,13 +111,13 @@ void poland(Map& map)
 	map.link("Katowice", "Lodz", 200, std::cout);
 	map.link("Lodz", "Gdansk", 340, std::cout);
 	map.link("Lodz", "Warszawa", 140, std::cout);
-	map.link("Katowice", "Wroclaw", 450, std::cout);
+	map.link("Katowice", "Wroclaw", 190, std::cout);
 	map.link("Szczecin", "Gdansk", 350, std::cout);
 	map.link("Bialystok", "Warszawa", 200, std::cout);
 	map.link("Warszawa", "Lublin", 200, std::cout);
-	map.link("Rzeszow", "Lublin", 170, std::cout);
+	map.link("Rzeszow", "Lublin", 200, std::cout);
 	map.link("Wroclaw", "Lodz", 220, std::cout);
-	map.link("Wroclaw", "Szczecin", 350, std::cout);
+	map.link("Wroclaw", "Szczecin", 450, std::cout);
 }
 
 bool split_to_words(std::vector<std::string>& words, std::string& source) {

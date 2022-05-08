@@ -86,9 +86,9 @@ void Map::recalculate_map()
 	}
 }
 
-void Map::print_all_cities(std::ostream& stream)
+void Map::print_all_cities(std::ostream& stream) const
 {
-	if (cities.get_element_nr() == 0) {
+	if (names.size() == 0) {
 		std::cout<<"There are no cities on this map!"<<std::endl;
 	}
 	else {
