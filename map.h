@@ -23,7 +23,7 @@ public:
 	neighbours list of second city and removing second city from neighbours list of first city.
 	Function prints relevant information on stream (wheather cities were on map, wheather they were linked before...s
 	*/
-	bool how_to_get(std::string from, std::string destination, std::ostream& stream);
+	bool how_to_get(std::string from, std::string destination, std::ostream& stream) const;
 	/*If any of two passed cities is not on the map fuction ”how_to_get” will print this information.
 	If there is no way to get from one city to another fuction ”how_to_get” will print this information.
 	If there is only one convenient path from one city to another, fuction ”how_to_get” will print this path and print that this is the only possible path.
@@ -40,11 +40,43 @@ public:
 	6) Gdynia 7) Czestochowa
 	*/
 
-	void print_city_neighbours(std::string city_name, std::ostream& stream);
+	void print_city_neighbours(std::string city_name, std::ostream& stream) const;
 	//prints all neighbours of given city. If city is not on the map this information will be printed.
-	void print_city_connections(std::string city_name, std::ostream& stream);
+	void print_city_connections(std::string city_name, std::ostream& stream) const;
 	//prints all connections (where you can get from this city) of given city.
 	//If city is not on the map this information will be printed.
+	bool save(std::string filepath, std::ostream& stream) const;
+	/*saves map structure in passed file.
+	* Note: Function only saves map structure (cities and links), it doesn't save cities memmory (calculated paths)
+	 Arguments:
+		filepath:
+			Name of file in which to save information. If file didn't exist earlier it is created. If it
+			exists eariler previous content is truncated. Directory in which file is must exist. If
+			filepath is dir1/save_file.txt and directory 'dir1' doesn't exists function will print this
+			information on stream and do nothing.
+		stream:
+			stream on which function prints information about success or failure.
+	 Return:
+		False in case of failure, false in case of success.
+	*/
+	bool load(std::string filename, std::ostream& stream);
+	/*saves map structure in passed file. 
+	Each line in file must be tow cities names and distance between theme. Example:
+		Gdansk;Warszawa;122
+		Krakow;Wieka Wies Szlachecka;213
+		Gdansk;Lodz;340
+	and so on...
+	If some line is not in above format, information is printed on the stream and aborting.
+
+	 Arguments:
+		filepath:
+			Name of file from which to load map structure. File is must exist. If  doesn't exists function
+			will print this information on stream and do nothing.
+		stream:
+			stream on which function prints information about success or failure.
+	 Return:
+		False in case of failure, false in case of success.
+*/
 	
 private:
 	SLL<std::string, City> cities; 

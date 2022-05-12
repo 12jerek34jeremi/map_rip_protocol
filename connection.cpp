@@ -1,4 +1,5 @@
 #include "connection.h"
+#include <stdexcept>
 
 Connection::Connection(const Path*  the_path) : best_path(the_path), second_best_path(nullptr), destination(the_path->from())
 {
@@ -21,7 +22,7 @@ Connection::~Connection()
 void Connection::update(const Path* the_path)
 {
 	if (the_path->from() != destination) {
-		throw std::exception("To connection object was sent the path which origin"
+		throw std::invalid_argument("To connection object was sent the path which origin"
 			"is different than destination of this object\n."
 			"(The distination is id of the city to which best connection is being chosen).");
 	}
@@ -32,6 +33,7 @@ void Connection::update(const Path* the_path)
 			best_path = the_path;
 		}
 		else {
+
 			second_best_path = the_path;
 		}
 	}

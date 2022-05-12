@@ -6,6 +6,7 @@
 #include "neighbour.h"
 #include "connection.h"
 #include <vector>
+#include <sstream>
 
 
 class City {
@@ -33,7 +34,7 @@ public:
 	* 
 	* If given city is not in the neighbour list function do nothing and return false.
 	*/
-	void print_neghbours(std::ostream& stream, const std::vector<std::string> & names);
+	void print_neghbours(std::ostream& stream, const std::vector<std::string> & names) const;
 	/*This function print on passed stream all neighbours of  this city.
 	Arguments:
 		std::ostream& my_stream:
@@ -44,8 +45,8 @@ public:
 			Names is vector which indices are cities ids and values are cities names. For example
 			name of city of id 7 is names[7].
 	*/
-	void print_all_connections(std::ostream& stream, const std::vector<std::string>& names);
-	bool print_connection(std::ostream& stream, const std::vector<std::string> & names, unsigned int id);
+	void print_all_connections(std::ostream& stream, const std::vector<std::string>& names) const;
+	bool print_connection(std::ostream& stream, const std::vector<std::string> & names, unsigned int id) const;
 	/*This function print on passed stream a best path (and if exists second best path) to given city.
 	If connection to given city is not on the connection table function prints that information on screan and
 	returns false.
@@ -74,6 +75,7 @@ public:
 	/*The path sending process needs to start somewhere. This function calls update mehtod on all it's neighbours.
 	* (Its sends the path conating id of this city and distance to given neighbour to all it's neigbour)
 	*/
+	void save_connections(std::stringstream& stream, const std::vector<std::string>& names) const;
 
 private:
 	const unsigned int id; //every city has an unique id number

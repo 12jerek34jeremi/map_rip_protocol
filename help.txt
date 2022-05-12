@@ -1,0 +1,117 @@
+This is a map program that's allows you to create a map of cities.
+Each city is recognised by it's city is recognised by it's unique name.
+You can add cities to a map using a link command.
+You can get the best two routes from one city to another using how_to_get command.
+The how_to_get command only checks city memmory. It doesn't actually count route.
+To count all routes and saves them in cities memmory 'call recalculate' command.
+
+Almost each command has it's full name and a short name.
+For example short version of how_to_get is h2g.
+Calling command by full name and short name is equivalent.
+For example:
+link Krakow; Nowa Wies Szlachecka; 250
+is equivalent to:
+l Krakow; Nowa Wies Szlachecka; 250
+
+
+Available commands:
+
+link
+    Alias: 'l'
+    While executing this command you must specify two cities names seperated by spaces and semicolon
+    and distance between this two cities. If any of passed cites is not yet on the map, methodfirst
+    creates new city on new map with given name. If cities were unlink before (one wasn’t a neighbour
+    of other) method links them (adds second city to list of neighbours of city1 and vice versa).
+    If cities were linked before method reset distance between them, so user can use this method
+    to change distance between cities.
+    Method prints on stream relevent information (about city creation or link creation)
+    Remember you can't used semicolon in cities names
+    Example: link Krakow ; Nowa Wies Szlachecka 250 
+
+unlink
+   Alias: 'ul'
+    While executing this command you must specify two cities names seperated by spaces and semicolon.
+    method does nothing if at least one city wasn’t on the map.
+    method do nothing if cities were unlinked. (but both were on the map).
+    If given cities were linked, method unlinks them. Unlinking means removing first city of
+    neighbours list of second city and removing second city from neighbours list of first city.
+    method prints relevant information on screan (wheather cities were on map, wheather they were linked before.
+    Example: link Krakow ; Nowa Wies Szlachecka
+
+how_to_get
+    Alias: 'h2g'
+    While executing this command you must specify two cities names seperated by spaces and semicolon.
+    First city is start point, second is destination.
+    If any of two passed cities is not on the map fuction ”how_to_get” will print this information.
+    If there is no way to get from one city to another fuction ”how_to_get” will print this information.
+    If there is only one convenient path from one city to another, fuction ”how_to_get” will print this path
+    and print that this is the only possible path.
+    If there are at least two possible paths connecting those two cities fuction ”how_to_get” will print those
+    path as best_path and second_best_path.
+    Example: h2g Krakow ; Nowa Wies Szlachecka
+
+recalculate
+    Alias: 'rec'
+    Calculating the best paths from each city to each other city and saves that in cities' memmory.
+
+
+print_all_cities
+    Alias: 'pac'
+    prints names of all cities that are actually on the map
+    Exemplatory otput on stream from this method:
+    1) Krakow  2) Warszawa  3) Rzeszow  4) Gdansk 5) Szczecin
+    6) Gdynia 7) Czestochowa
+
+print_city_neighbours
+    Alias: 'pcn'
+    While executing this command you must specify city name.
+    Prints all neighbours of given city. If city is not on the map this information will be printed.
+    Example: pcn Krakow
+
+print_city_connections:
+    Alias: 'pcc'
+    While executing this command you must specify city name.
+    Prints all connections (where you can get from this city) of given city.
+    If city is not on the map this information will be printed.
+    Example: pcc Krakow
+
+save
+    Alias: 's'
+    While executing this command you must specify file_path.
+    Saves map structure in passed file.
+    If file didn't exist earlier, it is created. If it existed eariler, previous content is truncated.
+    Directory in which file is must exist. If filepath is dir1/save_file.txt and directory 'dir1'
+     doesn't exists method will print this information on stream and do nothing.
+    Note: method only saves map structure (cities and links), it doesn't save cities memmory (calculated paths)
+    Example: save map_struct.txt
+
+load
+    Alias: 'ld'
+    While executing this command you must specify file_path.
+    Saves map structure in passed file. 
+    Each line in file must be tow cities names and distance between theme. Example:
+        Gdansk;Warszawa;122
+        Krakow;Wieka Wies Szlachecka;213
+        Gdansk;Lodz;340
+    If some line is not in above format, information is printed on the screen and aborting.
+    Name of file from which to load map structure. File is must exist. If  doesn't exists method
+    will print this information on stream and do nothing.
+    Example: load map_struct.txt
+
+exit
+    Alias: This command has no alias.
+    Exits program. Doesn't save created map structure before.
+    Example: exit
+
+help:
+    Alias: h
+    print this information on the screen
+    Example: help
+
+poland:
+    Alias: pl
+    Creates a simple, small map of poland consisting of 8 cities:
+    Krakow, Katowice, Wroclaw, Gdansk, Szczecin, Warszawa, Bialystok, Rzeszow
+
+
+    

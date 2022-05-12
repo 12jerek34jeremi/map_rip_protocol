@@ -50,8 +50,8 @@ class IteratorConst : public IteratorBase
 {
 public:
 	IteratorConst(ListElement* current);
-	value_type operator*() const;
-	key_type operator&() const;
+	const value_type & operator*() const;
+	const key_type & operator&() const;
 };
 
 public:
@@ -61,7 +61,7 @@ public:
 	void clear();
 	bool remove(const key_type key);
 	bool is_in(const key_type key) const;
-	value_type operator[](const key_type key) const;
+	const value_type & operator[](const key_type key) const;
 	value_type & operator[](const key_type key);
 	value_type* insert_back(const key_type key, const value_type value);
 	IteratorConst begin() const;
@@ -188,7 +188,7 @@ value_type* SLL<key_type, value_type>::insert_back(const key_type key, const val
 }
 
 template<typename key_type, typename value_type>
-value_type SLL<key_type, value_type>::operator[](const key_type key) const
+const value_type & SLL<key_type, value_type>::operator[](const key_type key) const
 {
 	ListElement* element = find(key);
 	if (element == nullptr)
@@ -334,7 +334,7 @@ inline key_type& SLL<key_type, value_type>::IteratorVar::operator&()
 }
 
 template <typename key_type, typename value_type>
-value_type SLL<key_type, value_type>::IteratorConst::operator*() const
+const value_type & SLL<key_type, value_type>::IteratorConst::operator*() const
 {
 	/*
 		Returns a pair (std::pair) of copies of key and value of node pointed by this iterator.
@@ -348,7 +348,7 @@ value_type SLL<key_type, value_type>::IteratorConst::operator*() const
 }
 
 template<typename key_type, typename value_type>
-inline key_type SLL<key_type, value_type>::IteratorConst::operator&() const
+const key_type & SLL<key_type, value_type>::IteratorConst::operator&() const
 {
 	if (IteratorBase::current == nullptr)
 		throw std::out_of_range("This iterator points on nothing.\n"
