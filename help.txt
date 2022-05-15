@@ -18,15 +18,15 @@ Available commands:
 
 link
     Alias: 'l'
-    While executing this command you must specify two cities names seperated by spaces and semicolon
-    and distance between this two cities. If any of passed cites is not yet on the map, methodfirst
+    While executing this command you must specify two cities names and distance between seperated
+    by spaces and semicolon. If any of passed cites is not yet on the map, methodfirst
     creates new city on new map with given name. If cities were unlink before (one wasn’t a neighbour
     of other) method links them (adds second city to list of neighbours of city1 and vice versa).
     If cities were linked before method reset distance between them, so user can use this method
     to change distance between cities.
     Method prints on stream relevent information (about city creation or link creation)
     Remember you can't used semicolon in cities names
-    Example: link Krakow ; Nowa Wies Szlachecka 250 
+    Example: link Krakow; Nowa Wies Szlachecka; 250 
 
 unlink
    Alias: 'ul'
@@ -36,7 +36,7 @@ unlink
     If given cities were linked, method unlinks them. Unlinking means removing first city of
     neighbours list of second city and removing second city from neighbours list of first city.
     method prints relevant information on screan (wheather cities were on map, wheather they were linked before.
-    Example: link Krakow ; Nowa Wies Szlachecka
+    Example: link Krakow; Nowa Wies Szlachecka
 
 how_to_get
     Alias: 'h2g'
@@ -48,7 +48,7 @@ how_to_get
     and print that this is the only possible path.
     If there are at least two possible paths connecting those two cities fuction ”how_to_get” will print those
     path as best_path and second_best_path.
-    Example: h2g Krakow ; Nowa Wies Szlachecka
+    Example: h2g Krakow; Nowa Wies Szlachecka
 
 recalculate
     Alias: 'rec'
