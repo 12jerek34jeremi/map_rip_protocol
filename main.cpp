@@ -157,7 +157,7 @@ void start()
 						"(Type 'help' for more info)" << std::endl;
 					continue;
 				}
-				map.save(filepath, std::cout);
+				map.load(filepath, std::cout);
 			}
 			else if (command == "poland" || command == "pl") {
 				map.load("poland.txt", std::cout);
@@ -194,6 +194,6 @@ void clear_screan()
 	system("cls");
 #endif // _WIN32
 #ifdef __linux__
-	system('clear');
+	system("clear");
 #endif // __linux__s
 }
