@@ -1,4 +1,4 @@
-#include "map.h"
+#include "include/map.h"
 #include <sstream>
 #include <fstream>
 #include <stdexcept>
@@ -11,6 +11,17 @@ Map::Map() : cities(), names(), next_id(0)
 bool Map::link(std::string city1_name, std::string city2_name, unsigned int distance, std::ostream& stream)
 {
 	City* city1; City* city2;
+
+	if (city1_name.find(';') != std::string::npos) {
+		stream << "City name can't contain any semicolons (;)." << std::endl;
+		stream << "City name " << city1_name << " is inproper.";
+		return false;
+	}
+	if (city1_name.find(';') != std::string::npos) {
+		stream << "City name can't contain any semicolons (;)." << std::endl;
+		stream << "City name " << city1_name << " is inproper.";
+		return false;
+	}
 
 	if (cities.is_in(city1_name))
 		city1 = &cities[city1_name];

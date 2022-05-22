@@ -1,9 +1,10 @@
+This program is an imitation of simple routing protocol.
 This is a map program that's allows you to create a map of cities.
-Each city is recognised by it's city is recognised by it's unique name.
+Each city is recognised by it's unique name.
 You can add cities to a map using a link command.
 You can get the best two routes from one city to another using how_to_get command.
 The how_to_get command only checks city memmory. It doesn't actually count route.
-To count all routes and saves them in cities memmory 'call recalculate' command.
+To count all routes and saves them in cities memmory call 'recalculate' command.
 
 Almost each command has it's full name and a short name.
 For example short version of how_to_get is h2g.

@@ -1,4 +1,4 @@
-#include "connection.h"
+#include "include/connection.h"
 #include <stdexcept>
 
 Connection::Connection(const Path*  the_path) : best_path(the_path), second_best_path(nullptr), destination(the_path->from())

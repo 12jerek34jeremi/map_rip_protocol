@@ -1,4 +1,4 @@
-#include "splitter.h"
+#include "include/splitter.h"
 #include <iostream>
 
 Splitter::Splitter() : position(0), text("")
