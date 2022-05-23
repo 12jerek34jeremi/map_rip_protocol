@@ -202,7 +202,7 @@ bool Map::load(std::string filename, std::ostream& stream)
 				break;
 			}
 			for (unsigned i = 0; i < distance_str.size(); i++) {
-				if (distance_str[i] < 48 || distance_str[i] > 57) {
+				if (distance_str[i] < '0' || distance_str[i] > '9') {
 					stream << "Can't convert " << distance_str << " to intiger." << std::endl;
 					all_good = false;
 					break;

@@ -194,6 +194,6 @@ void clear_screan()
 	system("cls");
 #endif // _WIN32
 #ifdef __linux__
-	system('clear');
+	system("clear");
 #endif // __linux__s
 }
