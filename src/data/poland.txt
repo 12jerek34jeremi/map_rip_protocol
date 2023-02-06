@@ -2,7 +2,6 @@ Gdansk;Warszawa;350
 Gdansk;Lodz;340
 Gdansk;Szczecin;350
 Warszawa;Krakow;300
-Warszawa;Lodz;140
 Warszawa;Bialystok;200
 Warszawa;Lublin;200
 Krakow;Katowice;80
@@ -11,3 +10,4 @@ Katowice;Wroclaw;190
 Lodz;Wroclaw;220
 Wroclaw;Szczecin;450
 Lublin;Rzeszow;200
+Berlin;Praga;450
