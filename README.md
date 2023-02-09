@@ -52,7 +52,7 @@ link Filadelfia;Nowy Jork;100
 ![screen4](img/screen4.png)<br/>
 <br/>
 ### Poznawanie trasy między miastami
-Aby miasta poznały trasy do innych miast, czyli żeby przekalkulować mapę, należy użyć komendy 'recalculate' lub jej aliasu 'rec'. Wtedy miasta wyślą zapytania jak trafić do  innych miast, zapytania te zostały omówione w . Następnie dowiedzieć się jak dostać się z misata A do miasta B, należy użyć komendy how_to_get, lub jej a[poprzedniej sekcji](#zasada-działania-algorytmu-imitującego-protokuł-rip)liasu h2g. Przykładowo chcemy się dowiedzieć jak trafić z Waszyngtony do Nowego Jorku.
+Aby miasta poznały trasy do innych miast, czyli żeby przekalkulować mapę, należy użyć komendy 'recalculate' lub jej aliasu 'rec'. Wtedy miasta wyślą zapytania jak trafić do  innych miast, zapytania te zostały omówione w [poprzedniej sekcji](#zasada-działania-algorytmu-imitującego-protokuł-rip). Następnie, aby dowiedzieć się jak dostać się z misata A do miasta B, należy użyć komendy how_to_get, lub jej a  aliasu h2g. Przykładowo chcemy się dowiedzieć jak trafić z Waszyngtony do Nowego Jorku.
 ~~~
 rec
 h2g Waszyngton;Nowy Jork;
